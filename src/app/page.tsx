@@ -20,10 +20,10 @@ export default function Home() {
           />
         </div>
         <div>
-          <h1 className="text-center text-4xl font-extrabold">Silvio Cesar</h1>
-          <h3 className="text-midground text-center font-light">
+          <h1 className="text-center text-4xl font-bold">Silvio Cesar</h1>
+          <h2 className="text-midground text-center font-light">
             FullStack Developer
-          </h3>
+          </h2>
         </div>
       </div>
 

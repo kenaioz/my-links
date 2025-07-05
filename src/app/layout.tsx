@@ -23,13 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${jetBrainsMono.variable} h-screen antialiased`}>
+      <body
+        className={`${jetBrainsMono.variable} ease-in-out; h-screen antialiased transition-all duration-300`}
+      >
         <header className="flex items-center justify-between px-8 py-4">
-          <h2>My Links</h2>
+          <h1>My Links | Kenaioz</h1>
           <ThemeSwitcher />
         </header>
         <main>{children}</main>
-        <footer></footer>
       </body>
     </html>
   );
