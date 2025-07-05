@@ -1,4 +1,4 @@
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const data = {
   name: "Silvio Cesar",
@@ -8,6 +8,11 @@ export const data = {
       title: "GitHub",
       url: "",
       icon: FaGithub,
+    },
+    {
+      title: "Linkedin",
+      url: "",
+      icon: FaLinkedin,
     },
   ],
   links: [
