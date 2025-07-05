@@ -1,36 +1,65 @@
 "use client";
-
-import { useEffect } from "react";
+import React from "react";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
 
+type Theme = "dark" | "light" | "system";
+
 function ThemeSwitcher() {
-  useEffect(() => {
-    console.log(localStorage.theme);
+  const [theme, setTheme] = React.useState<Theme>("system");
 
-    document.documentElement.classList.toggle(
-      "dark",
-      localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches),
-    );
-  });
+  React.useEffect(() => {
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const stored = localStorage.getItem("theme") as "dark" | "light" | null;
 
-  function changeTheme(theme: "dark" | "light") {
-    localStorage.theme = theme;
+    const effectiveTheme = stored || "system";
+    setTheme(effectiveTheme);
+
+    const applyTheme = () => {
+      const isDark = stored === "dark" || (!stored && media.matches);
+      document.documentElement.classList.toggle("dark", isDark);
+    };
+
+    applyTheme();
+    media.addEventListener("change", applyTheme);
+
+    return () => {
+      media.removeEventListener("change", applyTheme);
+    };
+  }, []);
+
+  function changeTheme(newTheme: "dark" | "light") {
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
   }
 
+  function resetTheme() {
+    localStorage.removeItem("theme");
+    setTheme("system");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    document.documentElement.classList.toggle("dark", prefersDark);
+  }
+
+  const buttonClass = (current: Theme) =>
+    `btn-theme ${theme === current && "bg-background text-foreground"}`;
+
   return (
-    <div className="flex items-center justify-between rounded-md bg-gray-700">
-      <button
-        className="cursor-pointer rounded-md p-1 data-[theme]:bg-gray-800"
-        onClick={() => localStorage.removeItem("theme")}
-      >
+    <div className="bg-foreground flex items-center justify-between gap-1 rounded-md p-1">
+      <button className={buttonClass("system")} onClick={resetTheme}>
         <MdComputer />
       </button>
-      <button className="p-1" onClick={() => changeTheme("dark")}>
+      <button
+        className={buttonClass("dark")}
+        onClick={() => changeTheme("dark")}
+      >
         <MdDarkMode />
       </button>
-      <button className="p-1" onClick={() => changeTheme("light")}>
+      <button
+        className={buttonClass("light")}
+        onClick={() => changeTheme("light")}
+      >
         <MdLightMode />
       </button>
     </div>
