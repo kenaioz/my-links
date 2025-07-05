@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: hsl(0 0 90);
   --foreground: hsl(0 0 10);
   --midground: hsl(0 0 30);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: hsl(0 0 10);
-    --foreground: hsl(0 0 90);
-    --midground: hsl(0 0 60);
-  }
+.dark {
+  --background: hsl(0 0 10);
+  --foreground: hsl(0 0 90);
+  --midground: hsl(0 0 60);
 }
 
 @theme inline {
@@ -24,4 +24,10 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--jetbrains-mono), monospace;
+}
+
+@layer components {
+  .btn-theme {
+    @apply text-background cursor-pointer rounded-md p-1 transition-all duration-300 ease-in-out;
+  }
 }
