@@ -47,7 +47,7 @@ export default function Home() {
             <li key={index}>
               <Link
                 role="button"
-                className="hover:bg-foreground hover:text-background focus:bg-foreground focus:text-background inline-flex w-full cursor-pointer items-center justify-center py-1 transition-all duration-300 ease-in-out focus:outline-0"
+                className="hover:bg-foreground hover:text-background focus:bg-foreground focus:text-background inline-flex w-full cursor-pointer items-center justify-center py-1 text-center transition-all duration-300 ease-in-out focus:outline-0"
                 href={link.url}
                 target="_blank"
               >
