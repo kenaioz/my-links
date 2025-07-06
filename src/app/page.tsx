@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { ButtonIcon } from "@/components/ui/ButtonIcon";
-import { Button } from "@/components/ui/Button";
-
 import { data } from "@/data/personal-data";
 
 export default function Home() {
@@ -31,10 +28,13 @@ export default function Home() {
         <ul className="flex items-center gap-1 text-2xl">
           {data.socials.map((social, index) => (
             <li key={index}>
-              <Link href={social.url}>
-                <ButtonIcon title={social.title}>
-                  <social.icon />
-                </ButtonIcon>
+              <Link
+                role="button"
+                href={social.url}
+                className="hover:bg-foreground hover:text-background focus:bg-foreground focus:text-background inline-flex cursor-pointer items-center justify-center rounded-full p-1.5 transition-all duration-300 ease-in-out focus:outline-0"
+                target="_blank"
+              >
+                <social.icon />
               </Link>
             </li>
           ))}
@@ -45,8 +45,13 @@ export default function Home() {
         <ul>
           {data.links.map((link, index) => (
             <li key={index}>
-              <Link href={link.url}>
-                <Button type="button">{link.title}</Button>
+              <Link
+                role="button"
+                className="hover:bg-foreground hover:text-background focus:bg-foreground focus:text-background inline-flex w-full cursor-pointer items-center justify-center py-1 transition-all duration-300 ease-in-out focus:outline-0"
+                href={link.url}
+                target="_blank"
+              >
+                {link.title}
               </Link>
             </li>
           ))}
