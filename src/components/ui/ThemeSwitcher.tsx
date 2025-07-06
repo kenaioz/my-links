@@ -19,27 +19,24 @@ function ThemeSwitcher() {
   return (
     <div className="bg-foreground flex items-center justify-between gap-1 rounded-md p-1">
       <button
-        className={
-          theme === "system" ? "btn-theme btn-theme-active" : "btn-theme"
-        }
+        className="text-background hover:bg-midground data-[active=true]:bg-background data-[active=true]:text-foreground cursor-pointer rounded-md p-1 transition-all duration-300 ease-in-out"
         onClick={() => setTheme("system")}
+        data-active={theme === "system"}
       >
         <MdComputer />
       </button>
 
       <button
-        className={
-          theme === "dark" ? "btn-theme btn-theme-active" : "btn-theme"
-        }
+        className="text-background hover:bg-midground data-[active=true]:bg-background data-[active=true]:text-foreground cursor-pointer rounded-md p-1 transition-all duration-300 ease-in-out"
         onClick={() => setTheme("dark")}
+        data-active={theme === "dark"}
       >
         <MdDarkMode />
       </button>
       <button
-        className={
-          theme === "light" ? "btn-theme btn-theme-active" : "btn-theme"
-        }
+        className="text-background hover:bg-midground data-[active=true]:bg-background data-[active=true]:text-foreground cursor-pointer rounded-md p-1 transition-all duration-300 ease-in-out"
         onClick={() => setTheme("light")}
+        data-active={theme === "light"}
       >
         <MdLightMode />
       </button>
