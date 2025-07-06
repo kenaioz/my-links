@@ -27,7 +27,7 @@ export default function RootLayout({
         className={`${jetBrainsMono.variable} ease-in-out; h-screen antialiased transition-all duration-300`}
       >
         <header className="flex items-center justify-between px-8 py-4">
-          <h1>My Links | Kenaioz</h1>
+          <h1>My Links</h1>
           <ThemeSwitcher />
         </header>
         <main>{children}</main>
