@@ -8,7 +8,7 @@ import { data } from "@/data/personal-data";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-items-center gap-y-4 p-8 sm:p-20">
+    <div className="flex flex-col items-center justify-items-center gap-y-4">
       <div className="flex flex-col items-center">
         <div className="border-foreground h-48 w-48 self-center overflow-hidden rounded-full border-2">
           <Image
@@ -41,7 +41,7 @@ export default function Home() {
         </ul>
       </div>
 
-      <div className="border-foreground w-full border-b-2 text-wrap sm:w-[80%]">
+      <div className="border-foreground w-full border-b-2 text-pretty md:w-[80%]">
         <ul>
           {data.links.map((link, index) => (
             <li key={index}>

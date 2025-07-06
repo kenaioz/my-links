@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={`${jetBrainsMono.variable} ease-in-out; h-screen antialiased transition-all duration-300`}
+        className={`${jetBrainsMono.variable} grid h-screen content-start gap-y-8 antialiased transition-all duration-300 ease-in-out`}
       >
         <ThemeProvider
           attribute="class"
@@ -35,11 +35,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header className="flex items-center justify-between px-8 py-4">
-            <h1>My Links</h1>
+          <header className="flex h-16 items-center justify-between px-8 py-4">
+            <h1 className="text-2xl">My Links</h1>
             <ThemeSwitcher />
           </header>
-          <main>{children}</main>
+
+          <main className="p-8">{children}</main>
         </ThemeProvider>
       </body>
     </html>
