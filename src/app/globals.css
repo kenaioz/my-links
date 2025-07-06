@@ -30,4 +30,8 @@ body {
   .btn-theme {
     @apply text-background hover:bg-midground cursor-pointer rounded-md p-1 transition-all duration-300 ease-in-out;
   }
+
+  .btn-theme-active {
+    @apply text-foreground bg-background hover:bg-background;
+  }
 }
